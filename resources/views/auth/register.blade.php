@@ -53,12 +53,12 @@ foreach($pages as $page)
                         <input type="text" class="form-control" id="name" name="name" aria-describedby="name" placeholder=" " :value="old('name')" required autofocus >
                       </div>
                     </div>
-                    <div class="col-lg-12">
+                    {{-- <div class="col-lg-12">
                       <div class="form-group">
-                        <label for="email" class="form-label">{{__('messages.Email')}}</label>
-                        <input type="email" class="form-control" id="email" name="email" aria-describedby="email" placeholder=" " :value="old('email')" required autofocus >
+                        <label for="name" class="form-label">{{__('messages.Email')}}</label>
+                        <input type="name" class="form-control" id="name" name="name" aria-describedby="name" placeholder=" " :value="old('name')" required autofocus >
                       </div>
-                    </div>
+                    </div> --}}
                     <div class="col-lg-12">
                       <div class="form-group">
                         <label for="password" class="form-label">{{__('messages.Password')}}</label>

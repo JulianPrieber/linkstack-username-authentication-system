@@ -49,8 +49,8 @@ foreach($pages as $page)
                 <div class="row">
                   <div class="col-lg-12">
                     <div class="form-group">
-                      <label for="email" class="form-label">{{__('messages.Email')}}</label>
-                      <input type="email" class="form-control" id="email" name="email" aria-describedby="email" placeholder=" " :value="old('email')" required autofocus >
+                      <label for="name" class="form-label">Username</label>
+                      <input type="name" class="form-control" id="name" name="name" aria-describedby="name" placeholder=" " :value="old('name')" required autofocus >
                     </div>
                   </div>
                   <div class="col-lg-12">

@@ -35,8 +35,7 @@ class RegisteredUserController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
+            'name' => 'required|string|max:255|unique:users',
             'password' => 'required|string|confirmed|min:8',
         ]);
 
@@ -52,14 +51,14 @@ class RegisteredUserController extends Controller
         {
             Auth::login($user = User::create([
                 'name' => $request->name,
-                'email' => $request->email,
+                'email' => $request->name."@example.com",
                 'password' => Hash::make($request->password),
                 'role' => 'user',
             ]));
         } else {
             Auth::login($user = User::create([
                 'name' => $request->name,
-                'email' => $request->email,
+                'email' => $request->name."@example.com",
                 'littlelink_name' => $request->name,
                 'password' => Hash::make($request->password),
                 'role' => 'user',
@@ -71,18 +70,6 @@ class RegisteredUserController extends Controller
 
 
             $user = $request->name;
-            $email = $request->email;
-            
-            try {
-            Mail::send('auth.user-confirmation', ['user' => $user, 'email' => $email], function ($message) use ($user) {
-                $message->to(env('ADMIN_EMAIL'))
-                        ->subject('New user registration');
-            });
-        } catch (\Exception $e) {}
-
-        try {
-        $request->user()->sendEmailVerificationNotification();
-        } catch (\Exception $e) {}
 
         event(new Registered($user));
 
